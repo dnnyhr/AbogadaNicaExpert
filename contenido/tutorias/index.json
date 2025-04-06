@@ -1,0 +1,18 @@
+{
+    "metadata": {
+      "titulo": "Tutorías de Derecho Laboral",
+      "descripcion": "Guías paso a paso sobre procesos legales laborales en Nicaragua",
+      "ultimaActualizacion": "2025-02-20"
+    },
+    "tutorias": [
+      {
+        "id": "tut-001",
+        "titulo": "Cómo calcular tu liquidación laboral paso a paso",
+        "ruta": "/contenido/tutorias/tut-001.html",
+        "descripcion": "Guía detallada para calcular correctamente todas las prestaciones que te corresponden en tu liquidación.",
+        "imagen": "/api/placeholder/800/500",
+        "categorias": ["derecho-laboral", "tutoriales"],
+        "etiquetas": ["liquidacion", "calculo", "prestaciones", "indemnizacion"]
+      }
+    ]
+  }

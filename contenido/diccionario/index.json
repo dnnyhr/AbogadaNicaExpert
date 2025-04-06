@@ -1,0 +1,17 @@
+{
+    "metadata": {
+      "titulo": "Diccionario Jurídico Laboral",
+      "descripcion": "Términos y definiciones importantes en el derecho laboral nicaragüense",
+      "ultimaActualizacion": "2025-01-30"
+    },
+    "terminos": [
+      {
+        "id": "term-001",
+        "termino": "Despido injustificado",
+        "ruta": "/contenido/diccionario/term-001.html",
+        "definicion": "Terminación unilateral de la relación laboral por parte del empleador sin una causa legal válida según el Código del Trabajo.",
+        "categorias": ["derecho-laboral", "terminologia"],
+        "etiquetas": ["despido", "terminacion-contrato"]
+      }
+    ]
+  }

@@ -1,0 +1,22 @@
+{
+    "metadata": {
+      "titulo": "Artículos de Derecho Laboral",
+      "descripcion": "Colección de artículos informativos sobre derecho en Nicaragua",
+      "ultimaActualizacion": "2025-04-01"
+    },
+    "articulos": [
+      {
+        "id": "art-001",
+        "titulo": "¿Qué hacer en caso de despido injustificado?",
+        "ruta": "/contenido/articulos/art-001.html",
+        "extracto": "Conoce tus derechos y los pasos a seguir tras un despido injustificado en Nicaragua según la legislación vigente.",
+        "imagen": "/api/placeholder/800/500",
+        "fecha": "2025-04-06",
+        "autor": "María Jiménez",
+        "comentarios": 8,
+        "categorias": ["derecho-laboral"],
+        "etiquetas": ["despido-injustificado", "derecho-laboral", "indemnizacion", "mitrab", "codigo-trabajo"],
+        "terminos": ["orden-alejamiento", "liquidacion-laboral", "prestaciones"]
+      }
+    ]
+  }

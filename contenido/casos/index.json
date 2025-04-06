@@ -1,0 +1,19 @@
+{
+    "metadata": {
+      "titulo": "Casos Reales de Derecho Laboral",
+      "descripcion": "Jurisprudencia y casos relevantes de resoluciones laborales en Nicaragua",
+      "ultimaActualizacion": "2025-03-15"
+    },
+    "casos": [
+      {
+        "id": "caso-001",
+        "titulo": "Caso de reintegro tras despido injustificado en empresa manufacturera",
+        "ruta": "/contenido/casos/caso-001.html",
+        "resumen": "Trabajador logra su reintegración y el pago de salarios caídos tras comprobar que su despido fue sin causa justificada.",
+        "imagen": "/api/placeholder/800/500",
+        "fecha": "2025-01-15",
+        "categorias": ["derecho-laboral", "jurisprudencia"],
+        "etiquetas": ["despido-injustificado", "reintegro", "salarios-caidos"]
+      }
+    ]
+  }

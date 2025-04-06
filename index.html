@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abogada NicaExpert - Asesoría Legal y Recursos Jurídicos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <!-- Header con logo y navegación -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-balance-scale fa-2x"></i>
+                </div>
+                <div class="logo-text">Abogada NicaExpert</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#articulos">Artículos</a>
+                <a href="#actualizaciones">Actualizaciones Legales</a>
+                <a href="#casos">Casos Reales</a>
+                <a href="#tutorias">Tutorías</a>
+                <a href="#diccionario">Diccionario</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            
+            <button class="menu-button" id="menuButton">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-button" id="closeButton">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#articulos"><i class="fas fa-file-alt"></i> Artículos</a></li>
+            <li><a href="#actualizaciones"><i class="fas fa-newspaper"></i> Actualizaciones Legales</a></li>
+            <li><a href="#casos"><i class="fas fa-gavel"></i> Casos Reales</a></li>
+            <li><a href="#tutorias"><i class="fas fa-graduation-cap"></i> Tutorías</a></li>
+            <li><a href="#diccionario"><i class="fas fa-book"></i> Diccionario Jurídico</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Sección de héroe -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Recursos Jurídicos en Nicaragua</h1>
+            <p>Bienvenido a tu portal de consulta legal, donde encontrarás soluciones prácticas para problemas jurídicos, actualizaciones legales y recursos para estudiantes de derecho.</p>
+            <div class="cta-buttons">
+                <a href="#articulos" class="button primary-button">Explorar Recursos</a>
+                <a href="#contacto" class="button secondary-button">Contactar Asesoría</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secciones del sitio -->
+    <section class="section sections-container" id="secciones">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestras Secciones</h2>
+                <p class="section-description">Explora diferentes áreas de información legal y recursos jurídicos diseñados para profesionales, estudiantes y público en general.</p>
+            </div>
+            <div class="sections-grid">
+                <div class="section-card">
+                    <div class="section-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="section-content">
+                        <h3>Artículos Legales</h3>
+                        <p>Encuentra artículos sobre diferentes aspectos legales en Nicaragua, desde procedimientos civiles hasta temas de derecho laboral.</p>
+                        <a href="#articulos" class="section-link">Ver Artículos <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="section-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="section-content">
+                        <h3>Actualizaciones Legales</h3>
+                        <p>Mantente al día con las más recientes actualizaciones de leyes y reglamentos en nuestro sistema jurídico nicaragüense.</p>
+                        <a href="#actualizaciones" class="section-link">Ver Actualizaciones <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="section-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="section-content">
+                        <h3>Casos Reales</h3>
+                        <p>Análisis de casos reales que se han presentado en los tribunales de Nicaragua, con explicaciones sobre su resolución.</p>
+                        <a href="#casos" class="section-link">Ver Casos <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="section-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="section-content">
+                        <h3>Tutorías para Estudiantes</h3>
+                        <p>Recursos y tutorías diseñadas especialmente para estudiantes de derecho que buscan reforzar sus conocimientos.</p>
+                        <a href="#tutorias" class="section-link">Ver Tutorías <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artículos recientes -->
+    <section class="section recent-articles" id="articulos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Artículos Recientes</h2>
+                <p class="section-description">Explora nuestros artículos más recientes sobre temas legales relevantes para Nicaragua.</p>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-image" style="background-image: url('/api/placeholder/800/500');">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Derecho Laboral</span>
+                        <h3 class="article-title">¿Qué hacer en caso de despido injustificado?</h3>
+                        <p class="article-excerpt">Conoce tus derechos y los pasos a seguir cuando enfrentas un despido sin justa causa en Nicaragua según la legislación actual.</p>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 15 Mar 2025</span>
+                            <span><i class="far fa-comment"></i> 8 comentarios</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-image" style="background-image: url('/api/placeholder/800/500');">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Derecho Familiar</span>
+                        <h3 class="article-title">Procedimiento para pensión alimenticia</h3>
+                        <p class="article-excerpt">Guía completa sobre cómo solicitar, modificar o hacer cumplir una pensión alimenticia en Nicaragua.</p>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 10 Mar 2025</span>
+                            <span><i class="far fa-comment"></i> 12 comentarios</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-image" style="background-image: url('/api/placeholder/800/500');">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Propiedad</span>
+                        <h3 class="article-title">Cómo legalizar una propiedad en Nicaragua</h3>
+                        <p class="article-excerpt">Aprende los pasos necesarios para regularizar y escriturar legalmente tu propiedad, evitando problemas futuros.</p>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 5 Mar 2025</span>
+                            <span><i class="far fa-comment"></i> 5 comentarios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="view-all-btn">Ver todos los artículos</button>
+        </div>
+    </section>
+
+    <!-- Seccion de estadísticas -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Artículos publicados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Casos analizados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Estudiantes ayudados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Años de experiencia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoniales -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Testimonios</h2>
+                <p class="section-description">Opiniones de quienes han utilizado nuestros recursos y servicios.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slides">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-image">
+                            <img src="/api/placeholder/200/200" alt="Testimonio 1">
+                        </div>
+                        <div class="testimonial-text">
+                            Los artículos de NicaExpert me han ayudado enormemente en mi práctica como abogado recién graduado. Son claros, prácticos y abordan temas que realmente nos encontramos día a día.
+                        </div>
+                        <div class="testimonial-author">Carlos Mendoza</div>
+                        <div class="testimonial-role">Abogado, Managua</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-image">
+                            <img src="/api/placeholder/200/200" alt="Testimonio 2">
+                        </div>
+                        <div class="testimonial-text">
+                            Como estudiante de derecho, las tutorías y recursos de esta página han sido fundamentales para mi formación. Explican conceptos complejos de manera accesible y práctica.
+                        </div>
+                        <div class="testimonial-author">María Jiménez</div>
+                        <div class="testimonial-role">Estudiante de Derecho, UNAN</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-image">
+                            <img src="/api/placeholder/200/200" alt="Testimonio 3">
+                        </div>
+                        <div class="testimonial-text">
+                            Gracias a los artículos sobre qué hacer en casos específicos, pude resolver un problema legal sin necesidad de contratar un abogado. Información muy valiosa y clara.
+                        </div>
+                        <div class="testimonial-author">Luis Martínez</div>
+                        <div class="testimonial-role">Empresario, León</div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-slide="0"></div>
+                    <div class="testimonial-dot" data-slide="1"></div>
+                    <div class="testimonial-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Tienes alguna consulta legal?</h2>
+                <p class="cta-text">Suscríbete a nuestro boletín para recibir las últimas actualizaciones legales y artículos directamente en tu correo electrónico.</p>
+                <form class="cta-form">
+                    <input type="email" class="cta-input" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="button primary-button">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acerca de NicaExpert</h3>
+                    <p>Somos un portal dedicado a proporcionar recursos jurídicos de calidad para profesionales, estudiantes y público en general en Nicaragua.</p>
+                    <p>Nuestro objetivo es facilitar el acceso a la información legal y promover una cultura jurídica más accesible.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#articulos">Artículos Legales</a></li>
+                        <li><a href="#actualizaciones">Actualizaciones Legales</a></li>
+                        <li><a href="#casos">Casos Reales</a></li>
+                        <li><a href="#tutorias">Tutorías</a></li>
+                        <li><a href="#diccionario">Diccionario Jurídico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>¿Quieres Contribuir?</h3>
+                    <p>Si eres abogado o estudiante de derecho y deseas compartir tus conocimientos, puedes enviar tu propio artículo para ser publicado en nuestro portal.</p>
+                    <a href="#" class="contribute-btn">Enviar Artículo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Managua, Nicaragua<br>Carretera a Masaya Km 8</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+505 2222-3333</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@nicaexpert.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Abogada NicaExpert. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de regreso arriba -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+<script src="./js/art-recientes.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
