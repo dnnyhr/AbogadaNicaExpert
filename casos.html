@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos Reales - Abogada NicaExpert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        /* Estilos específicos para la página de casos reales */
+        .search-container {
+            margin: 2rem auto;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1.5rem auto;
+            max-width: 700px;
+        }
+        
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            border: 1px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-tag:hover, .filter-tag.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .cases-grid {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+        
+        .no-results {
+            text-align: center;
+            margin: 4rem 0;
+            color: var(--text-muted);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .pagination-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .pagination-button:hover, .pagination-button.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con logo y navegación -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-balance-scale fa-2x"></i>
+                </div>
+                <div class="logo-text">Abogada NicaExpert</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html">Inicio</a>
+                <a href="articulos.html" class="active">Artículos</a>
+                <a href="actualizaciones.html">Actualizaciones Legales</a>
+                <a href="casos.html">Casos Reales</a>
+                <a href="tutorias.html">Tutorías</a>
+                <a href="diccionario.html">Diccionario</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            
+            <button class="menu-button" id="menuButton">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-button" id="closeButton">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="articulos.html"><i class="fas fa-file-alt"></i> Artículos</a></li>
+            <li><a href="actualizaciones.html"><i class="fas fa-newspaper"></i> Actualizaciones Legales</a></li>
+            <li><a href="casos.html"><i class="fas fa-gavel"></i> Casos Reales</a></li>
+            <li><a href="tutorias.html"><i class="fas fa-graduation-cap"></i> Tutorías</a></li>
+            <li><a href="diccionario.html"><i class="fas fa-book"></i> Diccionario Jurídico</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+       </ul>
+    </div>
+
+    <!-- Hero para la sección de casos reales -->
+    <section class="hero" style="padding: 4rem 0;">
+        <div class="hero-content">
+            <h1>Casos Reales</h1>
+            <p>Explora nuestra colección de casos reales y jurisprudencia nicaragüense, presentados de forma clara y con análisis práctico para comprender mejor la aplicación del derecho en situaciones concretas.</p>
+        </div>
+    </section>
+
+    <!-- Sección de búsqueda y filtrado -->
+    <section class="section">
+        <div class="container">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar casos...">
+            </div>
+            
+            <div class="filter-tags">
+                <span class="filter-tag active">Todos</span>
+                <span class="filter-tag">Derecho Laboral</span>
+                <span class="filter-tag">Derecho Familiar</span>
+                <span class="filter-tag">Propiedad</span>
+                <span class="filter-tag">Derecho Penal</span>
+                <span class="filter-tag">Jurisprudencia</span>
+                <span class="filter-tag">Constitucional</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de casos -->
+    <section class="section recent-cases" style="padding-top: 0;">
+        <div class="container">
+            <div class="articles-grid cases-grid" id="casesGrid">
+                <!-- Los casos se cargarán dinámicamente desde el archivo JSON -->
+            </div>
+            
+            <!-- Mensaje de no resultados (inicialmente oculto) -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>No se encontraron casos que coincidan con tu búsqueda</h3>
+                <p>Intenta con otros términos o navega por las categorías disponibles</p>
+            </div>
+            
+            <!-- Paginación -->
+            <div class="pagination" id="pagination">
+                <!-- Se generará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acerca de NicaExpert</h3>
+                    <p>Somos un portal dedicado a proporcionar recursos jurídicos de calidad para profesionales, estudiantes y público en general en Nicaragua.</p>
+                    <p>Nuestro objetivo es facilitar el acceso a la información legal y promover una cultura jurídica más accesible.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html#inicio">Inicio</a></li>
+                        <li><a href="/articulos.html">Artículos Legales</a></li>
+                        <li><a href="/actualizaciones.html">Actualizaciones Legales</a></li>
+                        <li><a href="/casos.html">Casos Reales</a></li>
+                        <li><a href="/tutorias.html">Tutorías</a></li>
+                        <li><a href="/diccionario.html">Diccionario Jurídico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>¿Quieres Contribuir?</h3>
+                    <p>Si eres abogado o estudiante de derecho y deseas compartir tus conocimientos, puedes enviar tu propio artículo para ser publicado en nuestro portal.</p>
+                    <a href="https://wa.me/50587160180" class="contribute-btn">Enviar Artículo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jinotega, Nicaragua.
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+505 87160180</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@abogadanicaexpert.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Abogada NicaExpert. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de regreso arriba -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Script para cargar y manejar los casos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Elementos del DOM
+    const searchInput = document.getElementById('searchInput');
+    const casesGrid = document.getElementById('casesGrid');
+    const noResults = document.getElementById('noResults');
+    const pagination = document.getElementById('pagination');
+    const filterTags = document.querySelectorAll('.filter-tag');
+    
+    // Variables para la paginación
+    let currentPage = 1;
+    const casesPerPage = 9;
+    let filteredCases = [];
+    let allCases = [];
+    function fuzzyMatch(text, searchTerm) {
+    if (!text) return false;
+    
+    // Convertir a minúsculas y eliminar acentos
+    text = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    searchTerm = searchTerm.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    
+    // Si la búsqueda es muy corta (1-2 caracteres), permitir coincidencia exacta
+    if (searchTerm.length <= 2) {
+        return text.includes(searchTerm);
+    }
+    
+    // Para búsquedas más largas, permitir coincidencia parcial
+    // Consideramos una coincidencia si al menos el 60% de los caracteres coinciden
+    const words = text.split(/\s+/);
+    
+    for (const word of words) {
+        // Coincidencia exacta
+        if (word.includes(searchTerm)) return true;
+        
+        // Coincidencia parcial para palabras de 4+ caracteres
+        if (searchTerm.length >= 4 && word.length >= 4) {
+            let matches = 0;
+            const minLength = Math.min(searchTerm.length, word.length);
+            
+            // Verificar si las primeras letras coinciden (esto es importante)
+            if (word.charAt(0) === searchTerm.charAt(0)) {
+                matches++;
+            }
+            
+            // Contar cuántos caracteres del término de búsqueda aparecen en la palabra
+            for (let i = 1; i < searchTerm.length; i++) {
+                if (word.includes(searchTerm.charAt(i))) {
+                    matches++;
+                }
+            }
+            
+            // Si al menos el 70% de los caracteres coinciden, considerar como acierto
+            if (matches / searchTerm.length >= 0.7) {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+    // Cargar casos desde JSON
+    fetch('/contenido/casos/index.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo de casos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Guardar todos los casos
+            allCases = data.casos || [];
+            filteredCases = [...allCases];
+            
+            // Mostrar casos iniciales
+            displayCases();
+        })
+        .catch(error => {
+            console.error('Error al cargar los casos:', error);
+            
+            // Mostrar mensaje de error
+            noResults.style.display = 'block';
+            noResults.innerHTML = `
+                <h3>Error al cargar los casos</h3>
+                <p>No se pudieron cargar los casos. Por favor, intenta nuevamente más tarde.</p>
+            `;
+        });
+    
+    // Función para mostrar los casos en el grid
+    function displayCases() {
+        // Calcular índices para la paginación
+        const startIndex = (currentPage - 1) * casesPerPage;
+        const endIndex = startIndex + casesPerPage;
+        const currentCases = filteredCases.slice(startIndex, endIndex);
+        
+        // Limpiar el grid
+        casesGrid.innerHTML = '';
+        
+        // Mostrar mensaje si no hay resultados
+        if (currentCases.length === 0) {
+            noResults.style.display = 'block';
+        } else {
+            noResults.style.display = 'none';
+            
+            // Crear tarjetas de casos
+            currentCases.forEach(caseItem => {
+                const caseCard = document.createElement('div');
+                caseCard.className = 'article-card';
+                
+                caseCard.innerHTML = `
+                    <div class="article-image" style="background-image: url('${caseItem.imagen || "/api/placeholder/800/500"}');">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">${caseItem.categorias[0] || 'General'}</span>
+                        <h3 class="article-title">${caseItem.titulo}</h3>
+                        <p class="article-excerpt">${caseItem.resumen}</p>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> ${caseItem.fecha}</span>
+                            <span><i class="fas fa-gavel"></i> ${caseItem.id}</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Hacer que toda la tarjeta sea clickeable
+                caseCard.addEventListener('click', function() {
+                    window.location.href = caseItem.ruta;
+                });
+                
+                casesGrid.appendChild(caseCard);
+            });
+        }
+        
+        // Crear paginación
+        createPagination();
+    }
+    
+    // Función para crear la paginación
+    function createPagination() {
+        const totalPages = Math.ceil(filteredCases.length / casesPerPage);
+        
+        // Limpiar paginación
+        pagination.innerHTML = '';
+        
+        // No mostrar paginación si hay solo una página
+        if (totalPages <= 1) {
+            return;
+        }
+        
+        // Botón anterior
+        const prevButton = document.createElement('div');
+        prevButton.className = 'pagination-button';
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevButton.addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayCases();
+                window.scrollTo(0, casesGrid.offsetTop - 100);
+            }
+        });
+        pagination.appendChild(prevButton);
+        
+        // Números de página
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('div');
+            pageButton.className = 'pagination-button';
+            if (i === currentPage) {
+                pageButton.classList.add('active');
+            }
+            pageButton.textContent = i;
+            pageButton.addEventListener('click', function() {
+                currentPage = i;
+                displayCases();
+                window.scrollTo(0, casesGrid.offsetTop - 100);
+            });
+            pagination.appendChild(pageButton);
+        }
+        
+        // Botón siguiente
+        const nextButton = document.createElement('div');
+        nextButton.className = 'pagination-button';
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextButton.addEventListener('click', function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayCases();
+                window.scrollTo(0, casesGrid.offsetTop - 100);
+            }
+        });
+        pagination.appendChild(nextButton);
+    }
+    
+    // Event listener para la búsqueda
+    searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase().trim();
+    const activeCategory = document.querySelector('.filter-tag.active').textContent;
+    
+    // Filtrar por término de búsqueda y categoría
+    filteredCases = allCases.filter(caseItem => {
+        // Buscar en título
+        const matchesTitle = fuzzyMatch(caseItem.titulo, searchTerm);
+        // Buscar en resumen
+        const matchesResumen = fuzzyMatch(caseItem.resumen, searchTerm);
+        // Buscar en etiquetas
+        const matchesTags = caseItem.etiquetas && caseItem.etiquetas.some(tag => 
+            fuzzyMatch(tag, searchTerm));
+
+        // Comprobar si coincide con alguno de los criterios de búsqueda
+        const matchesSearch = !searchTerm || matchesTitle || matchesResumen || matchesTags;
+        
+        // Comprobar si coincide con la categoría seleccionada
+        const matchesCategory = activeCategory === 'Todos' || 
+                               (caseItem.categorias && caseItem.categorias.some(cat => 
+                                   cat.toLowerCase().includes(activeCategory.toLowerCase())));
+        
+        return matchesSearch && matchesCategory;
+    });
+    
+    // Resetear a la primera página y mostrar resultados
+    currentPage = 1;
+    displayCases();
+});
+
+// También necesitas actualizar la función de filtrado en los tags de categoría
+filterTags.forEach(tag => {
+    tag.addEventListener('click', function() {
+        // Quitar clase active de todos los tags
+        filterTags.forEach(t => t.classList.remove('active'));
+        
+        // Añadir clase active al tag seleccionado
+        this.classList.add('active');
+        
+        const category = this.textContent;
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        // Filtrar por categoría y término de búsqueda
+        filteredCases = allCases.filter(caseItem => {
+            // Buscar en título
+            const matchesTitle = fuzzyMatch(caseItem.titulo, searchTerm);
+            // Buscar en resumen
+            const matchesResumen = fuzzyMatch(caseItem.resumen, searchTerm);
+            // Buscar en etiquetas
+            const matchesTags = caseItem.etiquetas && caseItem.etiquetas.some(tag => 
+                fuzzyMatch(tag, searchTerm));
+            
+            // Comprobar si coincide con alguno de los criterios de búsqueda
+            const matchesSearch = !searchTerm || matchesTitle || matchesResumen || matchesTags;
+            
+            // Comprobar si coincide con la categoría seleccionada
+            const matchesCategory = category === 'Todos' || 
+                                   (caseItem.categorias && caseItem.categorias.some(cat => {
+                                       const formattedCat = cat.replace('-', ' ').toLowerCase();
+                                       return formattedCat.includes(category.toLowerCase());
+                                   }));
+            
+            return matchesSearch && matchesCategory;
+        });
+        
+        // Resetear a la primera página y mostrar resultados
+        currentPage = 1;
+        displayCases();
+    });
+});
+    
+    // Funcionalidad para el menú lateral
+    const menuButton = document.getElementById('menuButton');
+    const closeButton = document.getElementById('closeButton');
+    const sidebar = document.getElementById('sidebar');
+    
+    menuButton.addEventListener('click', function() {
+        sidebar.classList.add('active');
+    });
+    
+    closeButton.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+    });
+    
+    // Botón de regreso arriba
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('active');
+        } else {
+            backToTopButton.classList.remove('active');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+    </script>
+</body>
+</html>

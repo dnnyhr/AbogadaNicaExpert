@@ -1,3 +1,52 @@
+:root{
+    --spacing-sm: 0.5rem;
+  --spacing-md: 0.8rem;
+  --spacing-lg: 1.2rem;
+  --spacing-xl: 1.5rem;
+  --border-radius: 8px;
+}
+
+/* Estilos comunes para ambos contenedores */
+.info-container {
+  background-color: var(--background-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-xl) 0;
+  color: var(--text-color);
+}
+
+/* Estilo para el contenedor de ejemplo */
+.ejemplo-container {
+  border: 1px dashed var(--border-color);
+}
+
+/* Estilo para el contenedor de alerta */
+.alerta-container {
+  border-left: 4px solid var(--primary-color);
+  padding: var(--spacing-xl);
+}
+
+/* Estilos para encabezados */
+.container-heading {
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Estilo para texto en itálica */
+.ejemplo-texto {
+  font-style: italic;
+}
+
+/* Estilo para texto en negrita */
+.texto-destacado {
+  font-weight: 700;
+}
+
+/* Estilo para iconos */
+.icon {
+  margin-right: var(--spacing-sm);
+}
 .article-header {
     background-image: linear-gradient(to right, rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.7)), url('/api/placeholder/1920/600');
     background-size: cover;

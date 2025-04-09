@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (viewAllBtn) {
         viewAllBtn.addEventListener('click', function() {
             // Redireccionar a la página de todos los artículos
-            window.location.href = '/contenido/todos-los-articulos.html';
+            window.location.href = '/articulos.html';
         });
     }
     

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diccionario Jurídico - Abogada NicaExpert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        /* Estilos específicos para la página de diccionario */
+        .search-container {
+            margin: 2rem auto;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1.5rem auto;
+            max-width: 700px;
+        }
+        
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            border: 1px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-tag:hover, .filter-tag.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .terms-grid {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+        
+        .no-results {
+            text-align: center;
+            margin: 4rem 0;
+            color: var(--text-muted);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .pagination-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .pagination-button:hover, .pagination-button.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con logo y navegación -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-balance-scale fa-2x"></i>
+                </div>
+                <div class="logo-text">Abogada NicaExpert</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html">Inicio</a>
+                <a href="articulos.html">Artículos</a>
+                <a href="actualizaciones.html">Actualizaciones Legales</a>
+                <a href="casos.html">Casos Reales</a>
+                <a href="tutorias.html">Tutorías</a>
+                <a href="diccionario.html" class="active">Diccionario</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            
+            <button class="menu-button" id="menuButton">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-button" id="closeButton">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="articulos.html"><i class="fas fa-file-alt"></i> Artículos</a></li>
+            <li><a href="actualizaciones.html"><i class="fas fa-newspaper"></i> Actualizaciones Legales</a></li>
+            <li><a href="casos.html"><i class="fas fa-gavel"></i> Casos Reales</a></li>
+            <li><a href="tutorias.html"><i class="fas fa-graduation-cap"></i> Tutorías</a></li>
+            <li><a href="diccionario.html"><i class="fas fa-book"></i> Diccionario Jurídico</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+       </ul>
+    </div>
+
+    <!-- Hero para la sección de diccionario -->
+    <section class="hero" style="padding: 4rem 0;">
+        <div class="hero-content">
+            <h1>Diccionario Jurídico</h1>
+            <p>Explora nuestro diccionario de términos jurídicos nicaragüenses, con definiciones claras y concisas para ayudarte a comprender mejor el lenguaje legal utilizado en nuestro país.</p>
+        </div>
+    </section>
+
+    <!-- Sección de búsqueda y filtrado -->
+    <section class="section">
+        <div class="container">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar términos jurídicos...">
+            </div>
+            
+            <div class="filter-tags">
+                <span class="filter-tag active">Todos</span>
+                <span class="filter-tag">Derecho Laboral</span>
+                <span class="filter-tag">Derecho Penal</span>
+                <span class="filter-tag">Derecho Civil</span>
+                <span class="filter-tag">Derecho Mercantil</span>
+                <span class="filter-tag">Procesal</span>
+                <span class="filter-tag">Constitucional</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de términos del diccionario -->
+    <section class="section recent-cases" style="padding-top: 0;">
+        <div class="container">
+            <div class="articles-grid terms-grid" id="termsGrid">
+                <!-- Los términos se cargarán dinámicamente desde el archivo JSON -->
+            </div>
+            
+            <!-- Mensaje de no resultados (inicialmente oculto) -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>No se encontraron términos que coincidan con tu búsqueda</h3>
+                <p>Intenta con otros términos o navega por las categorías disponibles</p>
+            </div>
+            
+            <!-- Paginación -->
+            <div class="pagination" id="pagination">
+                <!-- Se generará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acerca de NicaExpert</h3>
+                    <p>Somos un portal dedicado a proporcionar recursos jurídicos de calidad para profesionales, estudiantes y público en general en Nicaragua.</p>
+                    <p>Nuestro objetivo es facilitar el acceso a la información legal y promover una cultura jurídica más accesible.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html#inicio">Inicio</a></li>
+                        <li><a href="/articulos.html">Artículos Legales</a></li>
+                        <li><a href="/actualizaciones.html">Actualizaciones Legales</a></li>
+                        <li><a href="/casos.html">Casos Reales</a></li>
+                        <li><a href="/tutorias.html">Tutorías</a></li>
+                        <li><a href="/diccionario.html">Diccionario Jurídico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>¿Quieres Contribuir?</h3>
+                    <p>Si eres abogado o estudiante de derecho y deseas compartir tus conocimientos, puedes enviar tu propio artículo para ser publicado en nuestro portal.</p>
+                    <a href="https://wa.me/50587160180" class="contribute-btn">Enviar Artículo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jinotega, Nicaragua.
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+505 87160180</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@abogadanicaexpert.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Abogada NicaExpert. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de regreso arriba -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Script para cargar y manejar los términos del diccionario -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM
+            const searchInput = document.getElementById('searchInput');
+            const termsGrid = document.getElementById('termsGrid');
+            const noResults = document.getElementById('noResults');
+            const pagination = document.getElementById('pagination');
+            const filterTags = document.querySelectorAll('.filter-tag');
+            
+            // Variables para la paginación
+            let currentPage = 1;
+            const termsPerPage = 9;
+            let filteredTerms = [];
+            let allTerms = [];
+            
+            function fuzzyMatch(text, searchTerm) {
+                if (!text) return false;
+                
+                // Convertir a minúsculas y eliminar acentos
+                text = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                searchTerm = searchTerm.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                
+                // Si la búsqueda es muy corta (1-2 caracteres), permitir coincidencia exacta
+                if (searchTerm.length <= 2) {
+                    return text.includes(searchTerm);
+                }
+                
+                // Para búsquedas más largas, permitir coincidencia parcial
+                const words = text.split(/\s+/);
+                
+                for (const word of words) {
+                    // Coincidencia exacta
+                    if (word.includes(searchTerm)) return true;
+                    
+                    // Coincidencia parcial para palabras de 4+ caracteres
+                    if (searchTerm.length >= 4 && word.length >= 4) {
+                        let matches = 0;
+                        const minLength = Math.min(searchTerm.length, word.length);
+                        
+                        // Verificar si las primeras letras coinciden
+                        if (word.charAt(0) === searchTerm.charAt(0)) {
+                            matches++;
+                        }
+                        
+                        // Contar cuántos caracteres del término de búsqueda aparecen en la palabra
+                        for (let i = 1; i < searchTerm.length; i++) {
+                            if (word.includes(searchTerm.charAt(i))) {
+                                matches++;
+                            }
+                        }
+                        
+                        // Si al menos el 70% de los caracteres coinciden, considerar como acierto
+                        if (matches / searchTerm.length >= 0.7) {
+                            return true;
+                        }
+                    }
+                }
+                
+                return false;
+            }
+            
+            // Cargar términos desde JSON
+            fetch('/contenido/diccionario/index.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el archivo de términos');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Guardar todos los términos
+                    allTerms = data.terminos || [];
+                    filteredTerms = [...allTerms];
+                    
+                    // Mostrar términos iniciales
+                    displayTerms();
+                })
+                .catch(error => {
+                    console.error('Error al cargar los términos:', error);
+                    
+                    // Mostrar mensaje de error
+                    noResults.style.display = 'block';
+                    noResults.innerHTML = `
+                        <h3>Error al cargar el diccionario</h3>
+                        <p>No se pudieron cargar los términos. Por favor, intenta nuevamente más tarde.</p>
+                    `;
+                });
+            
+            // Función para mostrar los términos en el grid
+            function displayTerms() {
+                // Calcular índices para la paginación
+                const startIndex = (currentPage - 1) * termsPerPage;
+                const endIndex = startIndex + termsPerPage;
+                const currentTerms = filteredTerms.slice(startIndex, endIndex);
+                
+                // Limpiar el grid
+                termsGrid.innerHTML = '';
+                
+                // Mostrar mensaje si no hay resultados
+                if (currentTerms.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                    
+                    // Crear tarjetas de términos
+                    currentTerms.forEach(term => {
+                        const termCard = document.createElement('div');
+                        termCard.className = 'article-card';
+                        
+                        // Crear una imagen predeterminada para los términos
+                        const categoryImage = getCategoryImage(term.categorias);
+                        
+                        termCard.innerHTML = `
+                            <div class="article-image" style="background-image: url('${categoryImage}');">
+                            </div>
+                            <div class="article-content">
+                                <span class="article-category">${getCategoryName(term.categorias)}</span>
+                                <h3 class="article-title">${term.termino}</h3>
+                                <p class="article-excerpt">${term.definicion}</p>
+                                <div class="article-meta">
+                                    <span><i class="fas fa-tag"></i> ${term.etiquetas ? term.etiquetas.join(', ') : 'General'}</span>
+                                    <span><i class="fas fa-book"></i> ${term.id}</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Hacer que toda la tarjeta sea clickeable
+                        termCard.addEventListener('click', function() {
+                            window.location.href = term.ruta;
+                        });
+                        
+                        termsGrid.appendChild(termCard);
+                    });
+                }
+                
+                // Crear paginación
+                createPagination();
+            }
+            
+            // Función para obtener una imagen según la categoría
+            function getCategoryImage(categories) {
+                if (!categories || categories.length === 0) {
+                    return "/api/placeholder/400/300";
+                }
+                
+                const category = categories[0].toLowerCase();
+                
+                if (category.includes('laboral')) {
+                    return "/api/placeholder/400/300?text=Laboral";
+                } else if (category.includes('penal')) {
+                    return "/api/placeholder/400/300?text=Penal";
+                } else if (category.includes('civil')) {
+                    return "/api/placeholder/400/300?text=Civil";
+                } else if (category.includes('mercantil')) {
+                    return "/api/placeholder/400/300?text=Mercantil";
+                } else if (category.includes('procesal')) {
+                    return "/api/placeholder/400/300?text=Procesal";
+                } else if (category.includes('constitucional')) {
+                    return "/api/placeholder/400/300?text=Constitucional";
+                }
+                
+                return "/api/placeholder/400/300";
+            }
+            
+            // Función para obtener el nombre legible de la categoría
+            function getCategoryName(categories) {
+                if (!categories || categories.length === 0) {
+                    return 'General';
+                }
+                
+                // Convertir formatos como "derecho-laboral" a "Derecho Laboral"
+                const category = categories[0];
+                return category
+                    .split('-')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+            }
+            
+            // Función para crear la paginación
+            function createPagination() {
+                const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
+                
+                // Limpiar paginación
+                pagination.innerHTML = '';
+                
+                // No mostrar paginación si hay solo una página
+                if (totalPages <= 1) {
+                    return;
+                }
+                
+                // Botón anterior
+                const prevButton = document.createElement('div');
+                prevButton.className = 'pagination-button';
+                prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevButton.addEventListener('click', function() {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        displayTerms();
+                        window.scrollTo(0, termsGrid.offsetTop - 100);
+                    }
+                });
+                pagination.appendChild(prevButton);
+                
+                // Números de página
+                const maxVisiblePages = 5;
+                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+                
+                if (endPage - startPage + 1 < maxVisiblePages) {
+                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageButton = document.createElement('div');
+                    pageButton.className = 'pagination-button';
+                    if (i === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    pageButton.textContent = i;
+                    pageButton.addEventListener('click', function() {
+                        currentPage = i;
+                        displayTerms();
+                        window.scrollTo(0, termsGrid.offsetTop - 100);
+                    });
+                    pagination.appendChild(pageButton);
+                }
+                
+                // Botón siguiente
+                const nextButton = document.createElement('div');
+                nextButton.className = 'pagination-button';
+                nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextButton.addEventListener('click', function() {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayTerms();
+                        window.scrollTo(0, termsGrid.offsetTop - 100);
+                    }
+                });
+                pagination.appendChild(nextButton);
+            }
+            
+            // Event listener para la búsqueda
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const activeCategory = document.querySelector('.filter-tag.active').textContent;
+                
+                // Filtrar por término de búsqueda y categoría
+                filteredTerms = allTerms.filter(term => {
+                    // Buscar en término
+                    const matchesTermino = fuzzyMatch(term.termino, searchTerm);
+                    // Buscar en definición
+                    const matchesDefinicion = fuzzyMatch(term.definicion, searchTerm);
+                    // Buscar en etiquetas
+                    const matchesTags = term.etiquetas && term.etiquetas.some(tag => 
+                        fuzzyMatch(tag, searchTerm));
+                    
+                    // Comprobar si coincide con alguno de los criterios de búsqueda
+                    const matchesSearch = !searchTerm || matchesTermino || matchesDefinicion || matchesTags;
+                    
+                    // Comprobar si coincide con la categoría seleccionada
+                    const matchesCategory = activeCategory === 'Todos' || 
+                                          (term.categorias && term.categorias.some(cat => {
+                                              const formattedCat = cat.replace('-', ' ').toLowerCase();
+                                              return formattedCat.includes(activeCategory.toLowerCase());
+                                          }));
+                    
+                    return matchesSearch && matchesCategory;
+                });
+                
+                // Resetear a la primera página y mostrar resultados
+                currentPage = 1;
+                displayTerms();
+            });
+            
+            // Event listener para el filtrado por categorías
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    // Quitar clase active de todos los tags
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    
+                    // Añadir clase active al tag seleccionado
+                    this.classList.add('active');
+                    
+                    const category = this.textContent;
+                    const searchTerm = searchInput.value.toLowerCase().trim();
+                    
+                    // Filtrar por categoría y término de búsqueda
+                    filteredTerms = allTerms.filter(term => {
+                        // Buscar en término
+                        const matchesTermino = fuzzyMatch(term.termino, searchTerm);
+                        // Buscar en definición
+                        const matchesDefinicion = fuzzyMatch(term.definicion, searchTerm);
+                        // Buscar en etiquetas
+                        const matchesTags = term.etiquetas && term.etiquetas.some(tag => 
+                            fuzzyMatch(tag, searchTerm));
+                        
+                        // Comprobar si coincide con alguno de los criterios de búsqueda
+                        const matchesSearch = !searchTerm || matchesTermino || matchesDefinicion || matchesTags;
+                        
+                        // Comprobar si coincide con la categoría seleccionada
+                        const matchesCategory = category === 'Todos' || 
+                                              (term.categorias && term.categorias.some(cat => {
+                                                  const formattedCat = cat.replace('-', ' ').toLowerCase();
+                                                  return formattedCat.includes(category.toLowerCase());
+                                              }));
+                        
+                        return matchesSearch && matchesCategory;
+                    });
+                    
+                    // Resetear a la primera página y mostrar resultados
+                    currentPage = 1;
+                    displayTerms();
+                });
+            });
+            
+            // Funcionalidad para el menú lateral
+            const menuButton = document.getElementById('menuButton');
+            const closeButton = document.getElementById('closeButton');
+            const sidebar = document.getElementById('sidebar');
+            
+            menuButton.addEventListener('click', function() {
+                sidebar.classList.add('active');
+            });
+            
+            closeButton.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+            });
+            
+            // Botón de regreso arriba
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('active');
+                } else {
+                    backToTopButton.classList.remove('active');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

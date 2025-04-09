@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizaciones Legales - Abogada NicaExpert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <style>
+        /* Estilos específicos para la página de actualizaciones legales */
+        .search-container {
+            margin: 2rem auto;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1.5rem auto;
+            max-width: 700px;
+        }
+        
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            border: 1px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-tag:hover, .filter-tag.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .articles-grid {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+        
+        .no-results {
+            text-align: center;
+            margin: 4rem 0;
+            color: var(--text-muted);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .pagination-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .pagination-button:hover, .pagination-button.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        /* Estilos para el filtro de fechas */
+        .date-filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem auto;
+            max-width: 700px;
+            align-items: center;
+        }
+        
+        .date-filter-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .date-filter-group label {
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .date-input {
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-family: 'Raleway', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: var(--bg-light);
+        }
+        
+        .date-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 10px rgba(192, 57, 43, 0.2);
+        }
+        
+        .date-clear-button {
+            background-color: var(--light-gray);
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .date-clear-button:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        /* Estilos para las tarjetas de actualizaciones legales */
+        /* Estilos mejorados para las tarjetas de actualizaciones legales */
+.update-card {
+    background-color: #ffffff; /* Fondo sólido blanco en lugar de var(--bg-light) */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra más sutil pero definida */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-left: 4px solid var(--accent-color);
+    position: relative; /* Para posicionar elementos internos correctamente */
+    z-index: 1; /* Asegurar que las tarjetas estén por encima de otros elementos */
+}
+
+.update-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.update-card .update-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff; /* Asegurar que el contenido también tenga fondo sólido */
+}
+
+.update-date {
+    display: inline-block;
+    background-color: var(--accent-color); /* Color de fondo más claro */
+    color: #ffffff; /* Color blanco sólido para el texto */
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ligera sombra para destacar */
+}
+
+.update-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: #333333; /* Color más oscuro para mejor contraste */
+    line-height: 1.4; /* Mejor espaciado de línea */
+}
+
+.update-excerpt {
+    color: #666666; /* Color más oscuro que var(--text-muted) para mejor legibilidad */
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    line-height: 1.6; /* Mejor espaciado para legibilidad */
+}
+
+.update-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinear verticalmente */
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0; /* Separador sutil */
+}
+
+.update-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #555555; /* Más oscuro que el text-muted original */
+    font-size: 0.85rem;
+}
+
+.update-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    background-color: #f5f5f5; /* Fondo más claro */
+    color: #444444; /* Texto más oscuro */
+    margin-right: 0.4rem;
+    border: 1px solid #e0e0e0; /* Borde sutil */
+    font-weight: 500; /* Ligeramente más grueso */
+}
+
+/* Asegurar que las tarjetas se muestren correctamente en el grid */
+.articles-grid {
+    gap: 1.5rem; /* Aumentar el espacio entre tarjetas */
+    margin-bottom: 2rem;
+}
+
+/* Asegurar que la tarjeta completa sea clickeable */
+.update-card {
+    cursor: pointer;
+}
+
+/* Efecto visual cuando se hace hover */
+.update-card:hover .update-title {
+    color: var(--primary-color);
+}
+    </style>
+</head>
+<body>
+    <!-- Header con logo y navegación -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-balance-scale fa-2x"></i>
+                </div>
+                <div class="logo-text">Abogada NicaExpert</div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html">Inicio</a>
+                <a href="articulos.html">Artículos</a>
+                <a href="actualizaciones.html" class="active">Actualizaciones Legales</a>
+                <a href="casos.html">Casos Reales</a>
+                <a href="tutorias.html">Tutorías</a>
+                <a href="diccionario.html">Diccionario</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            
+            <button class="menu-button" id="menuButton">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-button" id="closeButton">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="articulos.html"><i class="fas fa-file-alt"></i> Artículos</a></li>
+            <li><a href="actualizaciones.html"><i class="fas fa-newspaper"></i> Actualizaciones Legales</a></li>
+            <li><a href="casos.html"><i class="fas fa-gavel"></i> Casos Reales</a></li>
+            <li><a href="tutorias.html"><i class="fas fa-graduation-cap"></i> Tutorías</a></li>
+            <li><a href="diccionario.html"><i class="fas fa-book"></i> Diccionario Jurídico</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero para la sección de actualizaciones legales -->
+    <section class="hero" style="padding: 4rem 0;">
+        <div class="hero-content">
+            <h1>Actualizaciones Legales</h1>
+            <p>Mantente al día con las últimas novedades jurídicas de Nicaragua. Reformas, nuevas leyes, resoluciones y cambios en la normativa nacional explicados de manera clara y concisa.</p>
+        </div>
+    </section>
+
+    <!-- Sección de búsqueda y filtrado -->
+    <section class="section">
+        <div class="container">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar actualizaciones legales...">
+            </div>
+            
+            <!-- Filtro por fechas -->
+            <div class="date-filter-container">
+                <div class="date-filter-group">
+                    <label for="startDate"><i class="far fa-calendar-alt"></i> Desde:</label>
+                    <input type="text" id="startDate" class="date-input" placeholder="Selecciona fecha inicial">
+                </div>
+                
+                <div class="date-filter-group">
+                    <label for="endDate"><i class="far fa-calendar-alt"></i> Hasta:</label>
+                    <input type="text" id="endDate" class="date-input" placeholder="Selecciona fecha final">
+                </div>
+                
+                <button id="clearDates" class="date-clear-button">
+                    <i class="fas fa-times"></i> Limpiar fechas
+                </button>
+            </div>
+            
+            <div class="filter-tags">
+                <span class="filter-tag active">Todos</span>
+                <span class="filter-tag">Reformas</span>
+                <span class="filter-tag">Nuevas Leyes</span>
+                <span class="filter-tag">Resoluciones</span>
+                <span class="filter-tag">Decretos</span>
+                <span class="filter-tag">Reglamentos</span>
+                <span class="filter-tag">Jurisprudencia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de actualizaciones legales -->
+    <section class="section recent-articles" style="padding-top: 0;">
+        <div class="container">
+            <div class="articles-grid" id="updatesGrid">
+                <!-- Las actualizaciones se cargarán dinámicamente desde el archivo JSON -->
+            </div>
+            
+            <!-- Mensaje de no resultados (inicialmente oculto) -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>No se encontraron actualizaciones que coincidan con tu búsqueda</h3>
+                <p>Intenta con otros términos, fechas o navega por las categorías disponibles</p>
+            </div>
+            
+            <!-- Paginación -->
+            <div class="pagination" id="pagination">
+                <!-- Se generará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acerca de NicaExpert</h3>
+                    <p>Somos un portal dedicado a proporcionar recursos jurídicos de calidad para profesionales, estudiantes y público en general en Nicaragua.</p>
+                    <p>Nuestro objetivo es facilitar el acceso a la información legal y promover una cultura jurídica más accesible.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html#inicio">Inicio</a></li>
+                        <li><a href="/articulos.html">Artículos Legales</a></li>
+                        <li><a href="/actualizaciones.html">Actualizaciones Legales</a></li>
+                        <li><a href="/casos.html">Casos Reales</a></li>
+                        <li><a href="/tutorias.html">Tutorías</a></li>
+                        <li><a href="/diccionario.html">Diccionario Jurídico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>¿Quieres Contribuir?</h3>
+                    <p>Si eres abogado o estudiante de derecho y deseas compartir tus conocimientos, puedes enviar tu propio artículo para ser publicado en nuestro portal.</p>
+                    <a href="https://wa.me/50587160180" class="contribute-btn">Enviar Artículo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jinotega, Nicaragua.
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+505 87160180</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@abogadanicaexpert.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Abogada NicaExpert. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de regreso arriba -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/es.min.js"></script>
+    
+    <!-- Script para cargar y manejar las actualizaciones legales -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM
+            const searchInput = document.getElementById('searchInput');
+            const updatesGrid = document.getElementById('updatesGrid');
+            const noResults = document.getElementById('noResults');
+            const pagination = document.getElementById('pagination');
+            const filterTags = document.querySelectorAll('.filter-tag');
+            const startDateInput = document.getElementById('startDate');
+            const endDateInput = document.getElementById('endDate');
+            const clearDatesButton = document.getElementById('clearDates');
+            
+            // Variables para la paginación
+            let currentPage = 1;
+            const updatesPerPage = 9;
+            let filteredUpdates = [];
+            let allUpdates = [];
+            
+            // Inicializar el selector de fechas con flatpickr
+            const startDatePicker = flatpickr(startDateInput, {
+                dateFormat: "d/m/Y",
+                locale: "es",
+                maxDate: "today",
+                disableMobile: "true",
+                onChange: function(selectedDates, dateStr) {
+                    endDatePicker.set("minDate", dateStr);
+                    filterUpdates();
+                }
+            });
+            
+            const endDatePicker = flatpickr(endDateInput, {
+                dateFormat: "d/m/Y",
+                locale: "es",
+                maxDate: "today",
+                disableMobile: "true",
+                onChange: function(selectedDates, dateStr) {
+                    startDatePicker.set("maxDate", dateStr || "today");
+                    filterUpdates();
+                }
+            });
+            
+            // Función para limpiar las fechas
+            clearDatesButton.addEventListener('click', function() {
+                startDatePicker.clear();
+                endDatePicker.clear();
+                startDatePicker.set("maxDate", "today");
+                endDatePicker.set("minDate", null);
+                filterUpdates();
+            });
+            
+            // Función para búsqueda difusa
+            function fuzzyMatch(text, searchTerm) {
+                if (!text) return false;
+                
+                // Convertir a minúsculas y eliminar acentos
+                text = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                searchTerm = searchTerm.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                
+                // Si la búsqueda es muy corta (1-2 caracteres), permitir coincidencia exacta
+                if (searchTerm.length <= 2) {
+                    return text.includes(searchTerm);
+                }
+                
+                // Para búsquedas más largas, permitir coincidencia parcial
+                // Consideramos una coincidencia si al menos el 60% de los caracteres coinciden
+                const words = text.split(/\s+/);
+                
+                for (const word of words) {
+                    // Coincidencia exacta
+                    if (word.includes(searchTerm)) return true;
+                    
+                    // Coincidencia parcial para palabras de 4+ caracteres
+                    if (searchTerm.length >= 4 && word.length >= 4) {
+                        let matches = 0;
+                        const minLength = Math.min(searchTerm.length, word.length);
+                        
+                        // Verificar si las primeras letras coinciden (esto es importante)
+                        if (word.charAt(0) === searchTerm.charAt(0)) {
+                            matches++;
+                        }
+                        
+                        // Contar cuántos caracteres del término de búsqueda aparecen en la palabra
+                        for (let i = 1; i < searchTerm.length; i++) {
+                            if (word.includes(searchTerm.charAt(i))) {
+                                matches++;
+                            }
+                        }
+                        
+                        // Si al menos el 70% de los caracteres coinciden, considerar como acierto
+                        if (matches / searchTerm.length >= 0.7) {
+                            return true;
+                        }
+                    }
+                }
+                
+                return false;
+            }
+            
+            // Función para parsear fecha en formato dd/mm/yyyy
+            function parseDate(dateString) {
+                if (!dateString) return null;
+                
+                const [day, month, year] = dateString.split('/');
+                return new Date(year, month - 1, day);
+            }
+            
+            // Cargar actualizaciones desde JSON
+            fetch('/contenido/actualizaciones/index.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el archivo de actualizaciones legales');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Guardar todas las actualizaciones
+                    allUpdates = data.actualizaciones || [];
+                    filteredUpdates = [...allUpdates];
+                    
+                    // Mostrar actualizaciones iniciales
+                    displayUpdates();
+                })
+                .catch(error => {
+                    console.error('Error al cargar las actualizaciones:', error);
+                    
+                    // Mostrar mensaje de error
+                    noResults.style.display = 'block';
+                    noResults.innerHTML = `
+                        <h3>Error al cargar las actualizaciones legales</h3>
+                        <p>No se pudieron cargar las actualizaciones. Por favor, intenta nuevamente más tarde.</p>
+                    `;
+                });
+            
+            // Función para mostrar las actualizaciones en el grid
+            function displayUpdates() {
+                // Calcular índices para la paginación
+                const startIndex = (currentPage - 1) * updatesPerPage;
+                const endIndex = startIndex + updatesPerPage;
+                const currentUpdates = filteredUpdates.slice(startIndex, endIndex);
+                
+                // Limpiar el grid
+                updatesGrid.innerHTML = '';
+                
+                // Mostrar mensaje si no hay resultados
+                if (currentUpdates.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                    
+                    // Crear tarjetas de actualizaciones
+                    currentUpdates.forEach(update => {
+                        const updateCard = document.createElement('div');
+                        updateCard.className = 'update-card';
+                        
+                        // Crear etiquetas HTML para las categorías
+                        const categoriesHTML = update.categorias && update.categorias.length > 0 
+                            ? update.categorias.map(cat => `<span class="update-tag">${cat}</span>`).join('') 
+                            : '';
+                        
+                        updateCard.innerHTML = `
+                            <div class="update-content">
+                                <span class="update-date">${update.fecha}</span>
+                                <h3 class="update-title">${update.titulo}</h3>
+                                <p class="update-excerpt">${update.extracto}</p>
+                                <div class="update-meta">
+                                    <div>${categoriesHTML}</div>
+                                    <span><i class="fas fa-file-pdf"></i> ${update.tipo || 'Documento'}</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Hacer que toda la tarjeta sea clickeable
+                        updateCard.addEventListener('click', function() {
+                            window.location.href = update.ruta;
+                        });
+                        
+                        updatesGrid.appendChild(updateCard);
+                    });
+                }
+                
+                // Crear paginación
+                createPagination();
+            }
+            
+            // Función para crear la paginación
+            function createPagination() {
+                const totalPages = Math.ceil(filteredUpdates.length / updatesPerPage);
+                
+                // Limpiar paginación
+                pagination.innerHTML = '';
+                
+                // No mostrar paginación si hay solo una página
+                if (totalPages <= 1) {
+                    return;
+                }
+                
+                // Botón anterior
+                const prevButton = document.createElement('div');
+                prevButton.className = 'pagination-button';
+                prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevButton.addEventListener('click', function() {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        displayUpdates();
+                        window.scrollTo(0, updatesGrid.offsetTop - 100);
+                    }
+                });
+                pagination.appendChild(prevButton);
+                
+                // Números de página
+                const maxVisiblePages = 5;
+                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+                
+                if (endPage - startPage + 1 < maxVisiblePages) {
+                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                }
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageButton = document.createElement('div');
+                    pageButton.className = 'pagination-button';
+                    if (i === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    pageButton.textContent = i;
+                    pageButton.addEventListener('click', function() {
+                        currentPage = i;
+                        displayUpdates();
+                        window.scrollTo(0, updatesGrid.offsetTop - 100);
+                    });
+                    pagination.appendChild(pageButton);
+                }
+                
+                // Botón siguiente
+                const nextButton = document.createElement('div');
+                nextButton.className = 'pagination-button';
+                nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextButton.addEventListener('click', function() {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayUpdates();
+                        window.scrollTo(0, updatesGrid.offsetTop - 100);
+                    }
+                });
+                pagination.appendChild(nextButton);
+            }
+            
+            // Función para filtrar actualizaciones
+            function filterUpdates() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const activeCategory = document.querySelector('.filter-tag.active').textContent;
+                const startDate = startDatePicker.selectedDates[0];
+                const endDate = endDatePicker.selectedDates[0];
+                
+                // Filtrar por términos, categoría y fechas
+                filteredUpdates = allUpdates.filter(update => {
+                    // Buscar en título
+                    const matchesTitle = fuzzyMatch(update.titulo, searchTerm);
+                    // Buscar en extracto
+                    const matchesExtract = fuzzyMatch(update.extracto, searchTerm);
+                    // Buscar en etiquetas
+                    const matchesTags = update.etiquetas && update.etiquetas.some(tag => 
+                        fuzzyMatch(tag, searchTerm));
+                    // Buscar en referencia legal o número
+                    const matchesReference = fuzzyMatch(update.referencia, searchTerm);
+                    
+                    // Comprobar si coincide con alguno de los criterios de búsqueda
+                    const matchesSearch = !searchTerm || matchesTitle || matchesExtract || matchesTags || matchesReference;
+                    
+                    // Comprobar si coincide con la categoría seleccionada
+                    const matchesCategory = activeCategory === 'Todos' || 
+                                        (update.categorias && update.categorias.some(cat => 
+                                            cat.toLowerCase().includes(activeCategory.toLowerCase())));
+                    
+                    // Comprobar si está dentro del rango de fechas
+                    let matchesDateRange = true;
+                    
+                    if (startDate || endDate) {
+                        const updateDate = parseDate(update.fecha);
+                        
+                        if (startDate && endDate) {
+                            matchesDateRange = updateDate >= startDate && updateDate <= endDate;
+                        } else if (startDate) {
+                            matchesDateRange = updateDate >= startDate;
+                        } else if (endDate) {
+                            matchesDateRange = updateDate <= endDate;
+                        }
+                    }
+                    
+                    return matchesSearch && matchesCategory && matchesDateRange;
+                });
+                
+                // Resetear a la primera página y mostrar resultados
+                currentPage = 1;
+                displayUpdates();
+            }
+            
+            // Event listener para la búsqueda
+            searchInput.addEventListener('input', filterUpdates);
+            
+            // Event listeners para los filtros de categoría
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    // Quitar clase active de todos los tags
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    
+                    // Añadir clase active al tag seleccionado
+                    this.classList.add('active');
+                    
+                    // Filtrar actualizaciones
+                    filterUpdates();
+                });
+            });
+            
+
+        });
+     </script>
+     <script src="/js/script.js"></script>
+</body>
+</html>

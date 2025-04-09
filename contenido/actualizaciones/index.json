@@ -1,0 +1,164 @@
+{
+    "actualizaciones": [
+      {
+        "titulo": "Reforma a la Ley de Conciliación y Arbitraje",
+        "fecha": "28/03/2025",
+        "extracto": "La Asamblea Nacional aprobó reformas a la Ley de Conciliación y Arbitraje para agilizar los procedimientos y dar mayor seguridad jurídica a los acuerdos alcanzados entre las partes.",
+        "categorias": ["Reformas", "Derecho Civil"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 987/2025",
+        "etiquetas": ["arbitraje", "conciliación", "resolución alternativa de conflictos"],
+        "ruta": "/contenido/actualizaciones/reforma-ley-conciliacion-arbitraje.html"
+      },
+      {
+        "titulo": "Nueva Ley de Protección de Datos Personales",
+        "fecha": "15/03/2025",
+        "extracto": "Entra en vigor la primera ley especializada en protección de datos personales en Nicaragua, estableciendo derechos, obligaciones y procedimientos para el tratamiento adecuado de información personal.",
+        "categorias": ["Nuevas Leyes", "Derecho Digital"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 982/2025",
+        "etiquetas": ["datos personales", "privacidad", "derechos digitales"],
+        "ruta": "/contenido/actualizaciones/nueva-ley-proteccion-datos-personales.html"
+      },
+      {
+        "titulo": "Reglamento de la Ley de Firma Electrónica",
+        "fecha": "02/03/2025",
+        "extracto": "El Poder Ejecutivo emitió el reglamento que facilita la implementación de la Ley de Firma Electrónica, especificando requisitos técnicos y procedimientos para su uso en actos jurídicos y administrativos.",
+        "categorias": ["Reglamentos", "Derecho Digital"],
+        "tipo": "Decreto",
+        "referencia": "Decreto No. 43/2025",
+        "etiquetas": ["firma electrónica", "comercio electrónico", "tecnología legal"],
+        "ruta": "/contenido/actualizaciones/reglamento-ley-firma-electronica.html"
+      },
+      {
+        "titulo": "Resolución sobre Tribunales de Familia",
+        "fecha": "25/02/2025",
+        "extracto": "La Corte Suprema de Justicia emitió una resolución que reorganiza la competencia territorial de los Tribunales de Familia en todo el país, buscando mayor eficiencia en la administración de justicia familiar.",
+        "categorias": ["Resoluciones", "Derecho de Familia"],
+        "tipo": "Resolución",
+        "referencia": "Resolución No. 12/2025",
+        "etiquetas": ["tribunales", "familia", "organización judicial"],
+        "ruta": "/contenido/actualizaciones/resolucion-tribunales-familia.html"
+      },
+      {
+        "titulo": "Reforma al Código Procesal del Trabajo",
+        "fecha": "18/02/2025",
+        "extracto": "Se aprobaron modificaciones al Código Procesal del Trabajo para simplificar procedimientos laborales y reducir los tiempos de resolución de conflictos entre empleadores y trabajadores.",
+        "categorias": ["Reformas", "Derecho Laboral"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 978/2025",
+        "etiquetas": ["laboral", "procedimiento", "trabajadores"],
+        "ruta": "/contenido/actualizaciones/reforma-codigo-procesal-trabajo.html"
+      },
+      {
+        "titulo": "Decreto de Incentivos para Inversiones Ambientales",
+        "fecha": "05/02/2025",
+        "extracto": "El Gobierno aprobó un decreto que establece incentivos fiscales para empresas que implementen tecnologías limpias y desarrollen proyectos de mitigación del cambio climático en Nicaragua.",
+        "categorias": ["Decretos", "Derecho Ambiental", "Derecho Fiscal"],
+        "tipo": "Decreto",
+        "referencia": "Decreto No. 35/2025",
+        "etiquetas": ["medio ambiente", "incentivos", "inversiones verdes"],
+        "ruta": "/contenido/actualizaciones/decreto-incentivos-inversiones-ambientales.html"
+      },
+      {
+        "titulo": "Jurisprudencia sobre Prescripción de Obligaciones Mercantiles",
+        "fecha": "27/01/2025",
+        "extracto": "La Sala Civil de la Corte Suprema emitió una importante sentencia que unifica criterios sobre los plazos de prescripción en obligaciones mercantiles entre comerciantes.",
+        "categorias": ["Jurisprudencia", "Derecho Mercantil"],
+        "tipo": "Sentencia",
+        "referencia": "Sentencia No. 025/2025",
+        "etiquetas": ["prescripción", "obligaciones", "mercantil"],
+        "ruta": "/contenido/actualizaciones/jurisprudencia-prescripcion-obligaciones-mercantiles.html"
+      },
+      {
+        "titulo": "Ley de Modernización del Registro Público",
+        "fecha": "15/01/2025",
+        "extracto": "Se aprobó una nueva ley que moderniza el sistema registral nicaragüense, implementando tecnología digital y simplificando trámites para inscripción de propiedades y constitución de empresas.",
+        "categorias": ["Nuevas Leyes", "Derecho Registral"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 975/2025",
+        "etiquetas": ["registro público", "propiedad", "digitalización"],
+        "ruta": "/contenido/actualizaciones/ley-modernizacion-registro-publico.html"
+      },
+      {
+        "titulo": "Reforma a la Ley de Contrataciones Administrativas",
+        "fecha": "07/01/2025",
+        "extracto": "La Asamblea Nacional aprobó reformas que aumentan la transparencia en los procesos de contratación pública y establecen nuevos mecanismos de control para prevenir actos de corrupción.",
+        "categorias": ["Reformas", "Derecho Administrativo"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 972/2025",
+        "etiquetas": ["contrataciones", "transparencia", "administración pública"],
+        "ruta": "/contenido/actualizaciones/reforma-ley-contrataciones-administrativas.html"
+      },
+      {
+        "titulo": "Nueva Ley de Propiedad Intelectual",
+        "fecha": "20/12/2024",
+        "extracto": "Se promulgó una nueva ley de propiedad intelectual que actualiza la protección de derechos de autor, patentes y marcas en Nicaragua, adaptándola a los estándares internacionales.",
+        "categorias": ["Nuevas Leyes", "Propiedad Intelectual"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 970/2024",
+        "etiquetas": ["propiedad intelectual", "derechos de autor", "patentes"],
+        "ruta": "/contenido/actualizaciones/nueva-ley-propiedad-intelectual.html"
+      },
+      {
+        "titulo": "Resolución sobre Procedimientos de Insolvencia",
+        "fecha": "05/12/2024",
+        "extracto": "El Tribunal Mercantil estableció criterios unificados para los procedimientos de insolvencia y quiebra, facilitando la reestructuración de empresas en dificultades financieras.",
+        "categorias": ["Resoluciones", "Derecho Mercantil"],
+        "tipo": "Resolución",
+        "referencia": "Resolución No. 89/2024",
+        "etiquetas": ["insolvencia", "quiebra", "reestructuración empresarial"],
+        "ruta": "/contenido/actualizaciones/resolucion-procedimientos-insolvencia.html"
+      },
+      {
+        "titulo": "Reforma al Código Penal sobre Delitos Informáticos",
+        "fecha": "28/11/2024",
+        "extracto": "Se modificó el Código Penal para tipificar nuevas conductas relacionadas con delitos informáticos, incluyendo el fraude electrónico y la suplantación de identidad digital.",
+        "categorias": ["Reformas", "Derecho Penal", "Derecho Digital"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 968/2024",
+        "etiquetas": ["delitos informáticos", "ciberdelincuencia", "seguridad digital"],
+        "ruta": "/contenido/actualizaciones/reforma-codigo-penal-delitos-informaticos.html"
+      },
+      {
+        "titulo": "Decreto de Promoción de Energías Renovables",
+        "fecha": "15/11/2024",
+        "extracto": "El Gobierno aprobó un conjunto de incentivos y facilidades para inversiones en proyectos de energías renovables, con el objetivo de diversificar la matriz energética nacional.",
+        "categorias": ["Decretos", "Derecho Ambiental", "Derecho Energético"],
+        "tipo": "Decreto",
+        "referencia": "Decreto No. 78/2024",
+        "etiquetas": ["energías renovables", "sostenibilidad", "inversiones"],
+        "ruta": "/contenido/actualizaciones/decreto-promocion-energias-renovables.html"
+      },
+      {
+        "titulo": "Jurisprudencia sobre Responsabilidad Civil Médica",
+        "fecha": "02/11/2024",
+        "extracto": "La Sala Civil estableció criterios sobre la carga de la prueba y los elementos de la responsabilidad profesional en casos de presunta negligencia médica.",
+        "categorias": ["Jurisprudencia", "Derecho Civil"],
+        "tipo": "Sentencia",
+        "referencia": "Sentencia No. 189/2024",
+        "etiquetas": ["responsabilidad médica", "salud", "negligencia profesional"],
+        "ruta": "/contenido/actualizaciones/jurisprudencia-responsabilidad-civil-medica.html"
+      },
+      {
+        "titulo": "Reglamento de la Ley de Arbitraje Comercial Internacional",
+        "fecha": "20/10/2024",
+        "extracto": "Se publicó el reglamento que desarrolla la Ley de Arbitraje Comercial Internacional, facilitando la resolución de disputas comerciales transfronterizas en Nicaragua.",
+        "categorias": ["Reglamentos", "Derecho Mercantil", "Derecho Internacional"],
+        "tipo": "Decreto",
+        "referencia": "Decreto No. 72/2024",
+        "etiquetas": ["arbitraje internacional", "comercio", "resolución de conflictos"],
+        "ruta": "/contenido/actualizaciones/reglamento-ley-arbitraje-comercial-internacional.html"
+      },
+      {
+        "titulo": "Ley de Protección al Consumidor Financiero",
+        "fecha": "05/10/2024",
+        "extracto": "Entró en vigor la nueva ley que establece derechos específicos para usuarios de servicios financieros y mecanismos de reclamación simplificados ante entidades bancarias y financieras.",
+        "categorias": ["Nuevas Leyes", "Derecho Bancario", "Protección al Consumidor"],
+        "tipo": "Ley",
+        "referencia": "Ley No. 965/2024",
+        "etiquetas": ["consumidor financiero", "bancos", "derechos"],
+        "ruta": "/contenido/actualizaciones/ley-proteccion-consumidor-financiero.html"
+      }
+    ]
+  }
